@@ -1,0 +1,172 @@
+.App {
+  text-align: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.App-header {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+.App-header h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+
+.App-header p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+.App-main {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.upload-section {
+  margin-bottom: 2rem;
+}
+
+.file-label {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #667eea;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.file-label:hover {
+  background: #5a6fd8;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-name {
+  margin-top: 1rem;
+  color: #666;
+  font-style: italic;
+}
+
+.input-section {
+  margin-bottom: 2rem;
+}
+
+.text-input, .password-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.text-input:focus, .password-input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.text-input {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.button-section {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.encode-btn, .decode-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.encode-btn {
+  background: #28a745;
+  color: white;
+}
+
+.encode-btn:hover:not(:disabled) {
+  background: #218838;
+}
+
+.decode-btn {
+  background: #007bff;
+  color: white;
+}
+
+.decode-btn:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+.encode-btn:disabled, .decode-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border: 1px solid #f5c6cb;
+}
+
+.decoded-section {
+  background: #d4edda;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #c3e6cb;
+}
+
+.decoded-section h3 {
+  margin: 0 0 1rem 0;
+  color: #155724;
+}
+
+.decoded-text {
+  background: white;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: left;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  color: #333;
+  border: 1px solid #b8dabc;
+}
+
+@media (max-width: 768px) {
+  .App-main {
+    margin: 1rem;
+    padding: 1rem;
+  }
+  
+  .button-section {
+    flex-direction: column;
+  }
+  
+  .App-header h1 {
+    font-size: 2rem;
+  }
+}
