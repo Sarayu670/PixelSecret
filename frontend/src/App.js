@@ -30,7 +30,7 @@ function App() {
     if (password) formData.append('password', password);
 
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/encode`, {
+      const response = await fetch('/api/encode', {
         method: 'POST',
         body: formData,
       });
@@ -69,7 +69,7 @@ function App() {
     if (password) formData.append('password', password);
 
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/decode`, {
+      const response = await fetch('/api/decode', {
         method: 'POST',
         body: formData,
       });
