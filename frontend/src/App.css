@@ -49,6 +49,10 @@
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .file-label:hover {
@@ -74,10 +78,13 @@
   padding: 12px;
   border: 2px solid #e1e5e9;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 16px !important;
   margin-bottom: 1rem;
   box-sizing: border-box;
   transition: border-color 0.3s;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .text-input:focus, .password-input:focus {
@@ -105,6 +112,11 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s;
+  touch-action: manipulation;
+  min-height: 48px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .encode-btn {
@@ -179,25 +191,142 @@
   opacity: 0.9;
 }
 
-@media (max-width: 768px) {
+/* Mobile phones (portrait) */
+@media (max-width: 480px) {
+  .App {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+  
   .App-main {
-    margin: 1rem;
+    margin: 0.5rem;
     padding: 1rem;
+    max-width: calc(100vw - 1rem);
+  }
+  
+  .App-header {
+    padding: 1.5rem 1rem;
+  }
+  
+  .App-header h1 {
+    font-size: 1.8rem;
   }
   
   .button-section {
     flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .encode-btn, .decode-btn {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+  }
+  
+  .App-footer {
+    padding: 1.5rem 1rem;
+  }
+  
+  .App-footer p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile phones (landscape) & small tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  .App-main {
+    margin: 1rem;
+    padding: 1.5rem;
+    max-width: calc(100vw - 2rem);
+  }
+  
+  .button-section {
+    flex-direction: row;
+    gap: 1rem;
   }
   
   .App-header h1 {
     font-size: 2rem;
   }
   
+  .App-header {
+    padding: 1.5rem 1rem;
+  }
+  
   .App-footer {
-    padding: 0.75rem;
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .App-main {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 2rem;
+  }
+  
+  .App-header h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Laptops & Desktops */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .App-main {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 3rem;
+  }
+  
+  .App-header h1 {
+    font-size: 3rem;
+  }
+}
+
+/* Large screens (TV, large monitors) */
+@media (min-width: 1441px) {
+  .App-main {
+    max-width: 1000px;
+    margin: 4rem auto;
+    padding: 4rem;
+  }
+  
+  .App-header {
+    padding: 3rem;
+  }
+  
+  .App-header h1 {
+    font-size: 4rem;
+  }
+  
+  .App-header p {
+    font-size: 1.5rem;
+  }
+  
+  .text-input, .password-input {
+    font-size: 18px !important;
+    padding: 16px;
+  }
+  
+  .encode-btn, .decode-btn {
+    padding: 16px 32px;
+    font-size: 18px;
+  }
+  
+  .file-label {
+    padding: 16px 32px;
+    font-size: 18px;
   }
   
   .App-footer p {
-    font-size: 0.8rem;
+    font-size: 1.2rem;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .App-main {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
   }
 }

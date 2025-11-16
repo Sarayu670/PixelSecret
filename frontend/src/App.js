@@ -21,6 +21,12 @@ function App() {
       return;
     }
 
+    // Check file size (mobile limitation)
+    if (selectedFile.size > 5 * 1024 * 1024) {
+      setError('Image too large. Please use an image smaller than 5MB.');
+      return;
+    }
+
     setLoading(true);
     setError('');
 
@@ -37,18 +43,37 @@ function App() {
 
       if (response.ok) {
         const blob = await response.blob();
+        
+        // Universal download for all devices
         const url = window.URL.createObjectURL(blob);
+        
+        // Try direct download first
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'encoded_image.jpg';
-        a.click();
+        a.download = 'encoded_image.png';
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        
+        try {
+          a.click();
+        } catch (err) {
+          // Fallback for devices that don't support direct download
+          window.open(url, '_blank');
+        }
+        
+        document.body.removeChild(a);
         window.URL.revokeObjectURL(url);
+        
+        // Show success message
+        setError('');
+        alert('Image encoded successfully! Check your downloads folder.');
       } else {
         const errorData = await response.json();
         setError(errorData.error || 'Failed to encode image');
       }
     } catch (err) {
-      setError('Network error. Make sure backend is running on port 5000.');
+      console.error('Encode error:', err);
+      setError(`Error: ${err.message || 'Failed to encode image. Please try again.'}`);
     }
 
     setLoading(false);
@@ -103,7 +128,8 @@ function App() {
           <input
             id="file-input"
             type="file"
-            accept="image/*"
+            accept="image/*,image/jpeg,image/jpg,image/png"
+            capture="environment"
             onChange={handleFileChange}
             className="file-input"
           />
