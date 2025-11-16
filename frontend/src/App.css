@@ -6,6 +6,8 @@
   background-repeat: no-repeat;
   background-size: cover;
   /* background-position: center */
+  display: flex;
+  flex-direction: column;
 }
 
 .App-header {
@@ -160,6 +162,23 @@
   border: 1px solid #b8dabc;
 }
 
+.App-footer {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 2rem;
+  text-align: center;
+  color: white;
+  margin-top: auto;
+  width: 100%;
+}
+
+.App-footer p {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
 @media (max-width: 768px) {
   .App-main {
     margin: 1rem;
@@ -172,5 +191,13 @@
   
   .App-header h1 {
     font-size: 2rem;
+  }
+  
+  .App-footer {
+    padding: 0.75rem;
+  }
+  
+  .App-footer p {
+    font-size: 0.8rem;
   }
 }

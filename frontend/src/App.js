@@ -157,6 +157,10 @@ function App() {
           </div>
         )}
       </main>
+      
+      <footer className="App-footer">
+        <p>Created by Sarayu Pittala - with love ❤️</p>
+      </footer>
     </div>
   );
 }
