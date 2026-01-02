@@ -51,15 +51,22 @@ async function extractTextFromImage(imageBuffer) {
   const { data } = await sharp(imageBuffer).raw().toBuffer({ resolveWithObject: true });
   const pixels = new Uint8Array(data);
 
-  let binaryText = '';
+  const endMarker = '###END###';
+  const endMarkerBinary = textToBinary(endMarker);
+  const binaryBits = [];
   
+  // Extract bits more efficiently
   for (let i = 0; i < pixels.length; i++) {
-    binaryText += (pixels[i] & 1).toString();
+    binaryBits.push(pixels[i] & 1);
     
-    if (binaryText.length % 8 === 0) {
-      const currentText = binaryToText(binaryText);
-      if (currentText.includes('###END###')) {
-        return currentText.replace('###END###', '');
+    // Check for end marker every 8 bits (1 byte)
+    if (binaryBits.length >= endMarkerBinary.length && binaryBits.length % 8 === 0) {
+      // Convert last bits to check for end marker
+      const recentBits = binaryBits.slice(-endMarkerBinary.length).join('');
+      if (recentBits === endMarkerBinary) {
+        // Found end marker, extract the text (excluding end marker)
+        const textBits = binaryBits.slice(0, -endMarkerBinary.length).join('');
+        return binaryToText(textBits);
       }
     }
   }

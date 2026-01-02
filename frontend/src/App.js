@@ -36,9 +36,17 @@ function App() {
     if (password) formData.append('password', password);
 
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/encode`, {
+      // Ensure HTTPS for production
+      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+      const secureUrl = window.location.protocol === 'https:' && apiUrl.startsWith('http://') 
+        ? apiUrl.replace('http://', 'https://') 
+        : apiUrl;
+      
+      const response = await fetch(`${secureUrl}/encode`, {
         method: 'POST',
         body: formData,
+        mode: 'cors',
+        credentials: 'omit'
       });
 
       if (response.ok) {
@@ -94,9 +102,17 @@ function App() {
     if (password) formData.append('password', password);
 
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/decode`, {
+      // Ensure HTTPS for production
+      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+      const secureUrl = window.location.protocol === 'https:' && apiUrl.startsWith('http://') 
+        ? apiUrl.replace('http://', 'https://') 
+        : apiUrl;
+      
+      const response = await fetch(`${secureUrl}/decode`, {
         method: 'POST',
         body: formData,
+        mode: 'cors',
+        credentials: 'omit'
       });
 
       const data = await response.json();

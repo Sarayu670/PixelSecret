@@ -12,14 +12,15 @@
 
 .App-header {
   background-color: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
+  padding: 0.75rem 0;
   color: white;
   backdrop-filter: blur(10px);
+  font-size: 1.25rem;
 }
 
 .App-header h1 {
   margin: 0 0 0.5rem 0;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: 300;
 }
 
@@ -29,9 +30,9 @@
 }
 
 .App-main {
-  max-width: 600px;
+  max-width: 450px;
   margin: 2rem auto;
-  padding: 2rem;
+  padding: 1.5rem;
   background: white;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -246,7 +247,7 @@
   }
   
   .App-header h1 {
-    font-size: 2rem;
+    font-size: 1.4rem;
   }
   
   .App-header {
@@ -267,7 +268,7 @@
   }
   
   .App-header h1 {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
   }
 }
 
@@ -280,7 +281,7 @@
   }
   
   .App-header h1 {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 }
 
@@ -297,7 +298,7 @@
   }
   
   .App-header h1 {
-    font-size: 4rem;
+    font-size: 2.5rem;
   }
   
   .App-header p {
